@@ -82,7 +82,8 @@ const resolvers = {
     deleteCourse: async (_, args, { req }) => {
       if (req.isAuth) {
         try {
-          const id = new mongoDB.ObjectId(args.id);
+          console.log(args)
+          const id = new mongoDB.ObjectId(args.updateID);
           const data = await course.deleteOne({ _id: id });
 
           return {

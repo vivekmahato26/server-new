@@ -14,7 +14,6 @@ module.exports = (req, res, next) => {
   let decodedToken;
   try {
     decodedToken = jwt.verify(token, process.env.JWT_KEY);
-    console.log(decodedToken);
     if (decodedToken.email) {
       req.isAuth = true;
       req.userId = decodedToken.id;
