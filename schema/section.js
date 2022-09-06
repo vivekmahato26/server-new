@@ -11,6 +11,7 @@ module.exports = {
             videoId: String
             createdAt: String
             updatedAt: String
+            sectionTitleID: String
         }
 
         type SourceCode {
@@ -79,6 +80,7 @@ module.exports = {
             type Query {
                 sections: [Section]
                 section(_id:String,createdAt:String): SectionUnion
+                getSectionBySectionTitle(sectionTitleId: String): [Section]
 
             
         }`,

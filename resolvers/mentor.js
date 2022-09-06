@@ -11,7 +11,7 @@ const resolvers = {
         const data = await mentor.find({}).toArray();
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
     mentor: async (_, args) => {
@@ -20,7 +20,7 @@ const resolvers = {
         const data = await mentor.findOne({ _id: id });
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
   },
@@ -109,7 +109,7 @@ const resolvers = {
             const data = await tickets.findOne({ _id: id });
             res.push(data);
           } catch (error) {
-            console.log({ err: JSON.stringify(error) });
+            console.log({ err: JSON.stringify(error.message) });
           }
         }
       }
@@ -126,7 +126,7 @@ const resolvers = {
             const data = await course.findOne({ _id: id });
             res.push(data);
           } catch (error) {
-            console.log({ err: JSON.stringify(error) });
+            console.log({ err: JSON.stringify(error.message) });
           }
         }
       }
@@ -142,7 +142,7 @@ const resolvers = {
             const data = await batch.findOne({ _id: id });
             res.push(data);
           } catch (error) {
-            console.log({ err: JSON.stringify(error) });
+            console.log({ err: JSON.stringify(error.message) });
           }
         }
       }
@@ -158,7 +158,7 @@ const resolvers = {
             const data = await chatLogs.findOne({ _id: id });
             res.push(data);
           } catch (error) {
-            console.log({ err: JSON.stringify(error) });
+            console.log({ err: JSON.stringify(error.message) });
           }
         }
       }

@@ -13,7 +13,7 @@ const resolvers = {
             const data = await tickets.find({}).toArray();
             return data;
           } catch (error) {
-            return { err: JSON.stringify(error) };
+            return { err: JSON.stringify(error.message) };
           }
         } else {
           return new Error("user not Authorised");
@@ -30,7 +30,7 @@ const resolvers = {
             const data = await tickets.findOne({ _id: id });
             return data;
           } catch (error) {
-            return { err: JSON.stringify(error) };
+            return { err: JSON.stringify(error.message) };
           }
         }
       }
@@ -127,7 +127,7 @@ const resolvers = {
             const data = await chatLogs.findOne({ _id: id });
             res.push(data);
           } catch (error) {
-            return { err: JSON.stringify(error) };
+            return { err: JSON.stringify(error.message) };
           }
         }
       }

@@ -11,7 +11,7 @@ const resolver = {
         const data = await job.find({}).toArray();
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
     job: async (_, args) => {
@@ -20,7 +20,7 @@ const resolver = {
         const data = await job.findOne({ _id: id });
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
   },

@@ -11,7 +11,7 @@ const resolver = {
         const data = await jobApplication.find({}).toArray();
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
     jobapp: async (_, args) => {
@@ -20,7 +20,7 @@ const resolver = {
         const data = await jobApplication.findOne({ _id: id });
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
   },
@@ -115,7 +115,7 @@ const resolver = {
             const data = await job.findOne({ _id: id });
             res.push(data);
           } catch (error) {
-            console.log({ err: JSON.stringify(error) });
+            console.log({ err: JSON.stringify(error.message) });
           }
         }
       }

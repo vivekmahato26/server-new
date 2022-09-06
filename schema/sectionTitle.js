@@ -9,6 +9,7 @@ const typeDefs = {
             description: String
             data: [SectionData] ${ /* Store only section data ID */'' }
             Section: [Section]
+            moduleID: String
           }
           input SectionTitleInput{
             title:String
@@ -36,6 +37,7 @@ const typeDefs = {
           type Query {
               sectionTitles : [SectionTitle]
               sectionTitle(_id :String):SectionTitleUnion
+              getSectionTitleByModule(moduleId: String): [SectionTitle]
           }
       `,
   mutation: `

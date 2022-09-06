@@ -11,7 +11,7 @@ const resolvers = {
         const data = await batch.find({}).toArray();
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
     batch: async (_, args) => {
@@ -20,7 +20,7 @@ const resolvers = {
         const data = await batch.findOne({ _id: id });
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
   },
@@ -119,7 +119,7 @@ const resolvers = {
 
             res.push(data);
           } catch (error) {
-            return { err: JSON.stringify(error) };
+            return { err: JSON.stringify(error.message) };
           }
         }
       }
@@ -137,7 +137,7 @@ const resolvers = {
 
             res = data;
           } catch (error) {
-            return { err: JSON.stringify(error) };
+            return { err: JSON.stringify(error.message) };
           }
         // }
       }

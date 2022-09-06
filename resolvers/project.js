@@ -11,7 +11,7 @@ const resolvers = {
         const data = await project.find({}).toArray();
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
     project: async (_, args) => {
@@ -20,7 +20,7 @@ const resolvers = {
         const data = await project.findOne({ _id: id });
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
   },

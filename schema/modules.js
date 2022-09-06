@@ -8,7 +8,7 @@ const typeDefs = {
             Project: [Project]
             createdAt : String
             updatedAt : String
-  
+            courseID: String
           }
           input ModulesInput{
             title:String
@@ -35,6 +35,7 @@ const typeDefs = {
         type Query {
             modules : [Modules]
             module(_id :String):ModuleUnion
+            getModulesByCourse(courseId: String): [Modules]
         }
       `,
   mutation: `

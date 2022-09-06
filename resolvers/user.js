@@ -24,6 +24,9 @@ module.exports = {
         if (userType === "mentor") {
           checkUser = await mentor.findOne({ email });
         }
+        if (userType === "admin") {
+          checkUser = await users.findOne({ email });
+        }
 
         if (!checkUser) {
           return new Error("User not registered");
@@ -75,7 +78,7 @@ module.exports = {
           const data = await users.findOne({ _id: _id });
           return { ...data, userID: _id };
         } catch (error) {
-          return { err: JSON.stringify(error) };
+          return { err: JSON.stringify(error.message) };
         }
       } else {
         return new Error("Please Login!!!");
@@ -144,7 +147,7 @@ module.exports = {
           const data = await address.findOne({ _id: id });
           res = data;
         } catch (error) {
-          return { err: JSON.stringify(error) };
+          return { err: JSON.stringify(error.message) };
           // }
         }
       }

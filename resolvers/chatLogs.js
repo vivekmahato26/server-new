@@ -10,7 +10,7 @@ const resolvers = {
         const data = await chatLogs.find({}).toArray();
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
     chatlog: async (_, args) => {
@@ -19,7 +19,7 @@ const resolvers = {
         const data = await chatLogs.findOne({ _id: id });
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
   },
@@ -68,7 +68,7 @@ const resolvers = {
             const data = await messages.findOne({ _id: id });
             res.push(data);
           } catch (error) {
-            return { err: JSON.stringify(error) };
+            return { err: JSON.stringify(error.message) };
           }
         }
       }
@@ -84,7 +84,7 @@ const resolvers = {
           const data = await tickets.findOne({ _id: id });
           res.push(data);
         } catch (error) {
-          return { err: JSON.stringify(error) };
+          return { err: JSON.stringify(error.message) };
         }
       }
       return res;

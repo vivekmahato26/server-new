@@ -17,7 +17,7 @@ const resolvers = {
         const data = await invoice.find({}).toArray();
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
     invoice: async (_, args) => {
@@ -26,7 +26,7 @@ const resolvers = {
         const data = await invoice.findOne({ _id: id });
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
   },
@@ -126,7 +126,7 @@ const resolvers = {
           const data = await order.findOne({ _id: id });
           res = data;
         } catch (error) {
-          console.log({ err: JSON.stringify(error) });
+          console.log({ err: JSON.stringify(error.message) });
         }
       }
       return res;
@@ -141,7 +141,7 @@ const resolvers = {
           const data = await payment.findOne({ _id: id });
           res = data;
         } catch (error) {
-          console.log({ err: JSON.stringify(error) });
+          console.log({ err: JSON.stringify(error.message) });
         }
       }
       return res;
@@ -156,7 +156,7 @@ const resolvers = {
           const data = await student.findOne({ _id: id });
           res = data;
         } catch (error) {
-          return { err: JSON.stringify(error) };
+          return { err: JSON.stringify(error.message) };
         }
       }
       return res;
@@ -171,7 +171,7 @@ const resolvers = {
           const data = await subscription.findOne({ _id: id });
           res = data;
         } catch (error) {
-          return { err: JSON.stringify(error) };
+          return { err: JSON.stringify(error.message) };
         }
       }
       return res;

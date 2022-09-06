@@ -10,7 +10,7 @@ const resolvers = {
         const data = await modules.find({}).toArray();
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
     module: async (_, args) => {
@@ -19,9 +19,17 @@ const resolvers = {
         const data = await modules.findOne({ _id: id });
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
+    getModulesByCourse: async (_, args) => {
+      try {
+        const data = await modules.find({ courseID: args.courseId }).toArray();
+        return data;
+      } catch (error) {
+        throw new Error({ err: JSON.stringify(error.message) });
+      }
+    }
   },
   Mutation: {
     addModules: async (_, args, { req }) => {
@@ -163,7 +171,7 @@ const resolvers = {
             const data = await sectionTitle.findOne({ _id: id });
             res.push(data);
           } catch (error) {
-            console.log({ err: JSON.stringify(error) });
+            console.log({ err: JSON.stringify(error.message) });
           }
         }
       }
@@ -180,7 +188,7 @@ const resolvers = {
             const data = await challenge.findOne({ _id: id });
             res.push(data);
           } catch (error) {
-            console.log({ err: JSON.stringify(error) });
+            console.log({ err: JSON.stringify(error.message) });
           }
         }
       }
@@ -197,7 +205,7 @@ const resolvers = {
             const data = await project.findOne({ _id: id });
             res.push(data);
           } catch (error) {
-            console.log({ err: JSON.stringify(error) });
+            console.log({ err: JSON.stringify(error.message) });
           }
         }
       }
@@ -215,7 +223,7 @@ const resolvers = {
     //         const data = await section.findOne({ _id: id });
     //         res.push(data);
     //       } catch (error) {
-    //         console.log({ err: JSON.stringify(error) });
+    //         console.log({ err: JSON.stringify(error.message) });
     //       }
     //     }
     //   }

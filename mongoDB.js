@@ -12,7 +12,7 @@ const client = new MongoClient(
   { keepAlive: 1 }
 );
 
-const database = client.db("insertDB");
+const database = client.db("test");
 
 const address = database.collection("address");
 const users = database.collection("users");

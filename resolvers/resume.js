@@ -11,7 +11,7 @@ const resolvers = {
         const data = await resume.find({}).toArray();
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
     resume: async (_, args) => {
@@ -20,7 +20,7 @@ const resolvers = {
         const data = await resume.findOne({ _id: id });
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
   },

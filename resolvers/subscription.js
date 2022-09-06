@@ -11,7 +11,7 @@ const resolvers = {
         const data = await subscription.find({}).toArray();
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
     subscription: async (_, args) => {
@@ -20,7 +20,7 @@ const resolvers = {
         const data = await subscription.findOne({ _id: id });
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
   },
@@ -112,7 +112,7 @@ const resolvers = {
             const data = await student.findOne({ _id: id });
             res = data;
           } catch (error) {
-            console.log({ err: JSON.stringify(error) });
+            console.log({ err: JSON.stringify(error.message) });
           }
         // }
       }
@@ -128,7 +128,7 @@ const resolvers = {
           const data = await course.findOne({ _id: id });
           res = data;
         } catch (error) {
-          console.log({ err: JSON.stringify(error) });
+          console.log({ err: JSON.stringify(error.message) });
         }
       }
       return res;
@@ -143,7 +143,7 @@ const resolvers = {
           const data = await payment.findOne({ _id: id });
           res = data;
         } catch (error) {
-          console.log({ err: JSON.stringify(error) });
+          console.log({ err: JSON.stringify(error.message) });
         }
       }
       return res;
@@ -158,7 +158,7 @@ const resolvers = {
           const data = await order.findOne({ _id: id });
           res = data;
         } catch (error) {
-          console.log({ err: JSON.stringify(error) });
+          console.log({ err: JSON.stringify(error.message) });
         }
       }
       return res;
@@ -174,7 +174,7 @@ const resolvers = {
             const data = await batch.findOne({ _id: id });
             res= data;
           } catch (error) {
-            console.log({ err: JSON.stringify(error) });
+            console.log({ err: JSON.stringify(error.message) });
           }
         // }
       }

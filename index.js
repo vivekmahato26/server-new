@@ -23,43 +23,7 @@ const auth = require("./middlewares/auth");
 
 app.use(cors());
 
-app.post("/getCreds", async (req, res) => {
-  try {
-    const data = await axios.put("https://dev.vdocipher.com/api/videos", null, {
-      params: {
-        title: req.body.fileName,
-        folderId: "3a62c56b6bae4b36bb18de1415bb59f0"
-      },
-      headers: {
-        Authorization:
-          "Apisecret h0bfXiUNkDFWvOSKoLhjpctcsbCVUFFc4iziwdYSlwNAlwHM3zJd2gvpjNZ4BgFj",
-      },
 
-    });
-    res.send(data.data);
-    // console.log(data.data)
-  } catch (error) {
-    // console.log(error);
-    res.send(error);
-  }
-});
-
-app.post("/getVideoOTP", async (req, res) => {
-  try {
-    const data = await axios.post("https://dev.vdocipher.com/api/videos/" + req.body.videoId + "/otp", { ttl: 300 }, {
-      headers: {
-        Authorization:
-          "Apisecret h0bfXiUNkDFWvOSKoLhjpctcsbCVUFFc4iziwdYSlwNAlwHM3zJd2gvpjNZ4BgFj",
-      },
-
-    });
-    res.send(data.data);
-    // console.log(data.data)
-  } catch (error) {
-    // console.log(error);
-    res.send(error);
-  }
-});
 
 // *****************************************
 

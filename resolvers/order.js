@@ -10,7 +10,7 @@ const resolvers = {
         const data = await order.find({}).toArray();
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
     order: async (_, args) => {
@@ -19,7 +19,7 @@ const resolvers = {
         const data = await order.findOne({ _id: id });
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
   },
@@ -121,7 +121,7 @@ const resolvers = {
             const data = await student.findOne({ _id: id });
             res.push(data);
           } catch (error) {
-            console.log({ err: JSON.stringify(error) });
+            console.log({ err: JSON.stringify(error.message) });
           }
         }
       }
@@ -139,7 +139,7 @@ const resolvers = {
             const data = await payment.findOne({ _id: id });
             res.push(data);
           } catch (error) {
-            console.log({ err: JSON.stringify(error) });
+            console.log({ err: JSON.stringify(error.message) });
           }
         }
       }
@@ -156,7 +156,7 @@ const resolvers = {
             const data = await invoice.findOne({ _id: id });
             res.push(data);
           } catch (error) {
-            console.log({ err: JSON.stringify(error) });
+            console.log({ err: JSON.stringify(error.message) });
           }
         }
       }

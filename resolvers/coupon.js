@@ -10,7 +10,7 @@ const resolvers = {
         const data = await coupon.find({}).toArray();
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
     coupon: async (_, args) => {
@@ -20,7 +20,7 @@ const resolvers = {
         console.log(data);
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
   },

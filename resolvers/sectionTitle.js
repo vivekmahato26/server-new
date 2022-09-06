@@ -10,7 +10,7 @@ const resolvers = {
         const data = await sectionTitle.find({}).toArray();
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
     sectionTitle: async (_, args) => {
@@ -19,7 +19,15 @@ const resolvers = {
         const data = await sectionTitle.findOne({ _id: id });
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
+      }
+    },
+    getSectionTitleByModule: async (_, args) => {
+      try {
+        const data = await sectionTitle.find({ moduleID: args.moduleId }).toArray();
+        return data;
+      } catch (error) {
+        throw new Error({ err: JSON.stringify(error.message) });
       }
     },
   },
@@ -27,14 +35,17 @@ const resolvers = {
   Mutation: {
     addSectionTitle: async (_, args, { req }) => {
       if (req.isAuth) {
-        const moduleId = args.input.moduleID
+        const moduleId = args.input.moduleID;
         try {
           const result = await sectionTitle.insertOne({
             ...args.input,
             createdAt: date.toISOString(),
           });
           const id = new mongoDB.ObjectId(moduleId);
-          const res = await modules.updateOne({_id:id},{$push: {SectionTitle: result.insertedId.toString()}})
+          const res = await modules.updateOne(
+            { _id: id },
+            { $push: { SectionTitle: result.insertedId.toString() } }
+          );
           return {
             msg: "data Added",
           };
@@ -47,7 +58,7 @@ const resolvers = {
         };
       }
     },
-    updateSectionTitle: async (_, args, {req}) => {
+    updateSectionTitle: async (_, args, { req }) => {
       if (req.isAuth) {
         try {
           const id = new mongoDB.ObjectId(args.updateID);
@@ -111,7 +122,7 @@ const resolvers = {
             const data = await section.findOne({ _id: id });
             res.push(data);
           } catch (error) {
-            console.log({ err: JSON.stringify(error) });
+            console.log({ err: JSON.stringify(error.message) });
           }
         }
       }

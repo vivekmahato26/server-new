@@ -31,7 +31,7 @@ const resolvers = {
 
           return data;
         } catch (error) {
-          return { err: JSON.stringify(error) };
+          return { err: JSON.stringify(error.message) };
         }
       }
     },
@@ -41,7 +41,7 @@ const resolvers = {
         const data = await student.find({ _id: id }).toArray();
         return data[0];
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
   },
@@ -138,7 +138,7 @@ const resolvers = {
             const data = await address.findOne({ _id: id });
             res = data;
           } catch (error) {
-            return { err: JSON.stringify(error) };
+            return { err: JSON.stringify(error.message) };
           }
         }
       }
@@ -156,7 +156,7 @@ const resolvers = {
             const data = await course.findOne({ _id: id });
             res.push(data);
           } catch (error) {
-            return { err: JSON.stringify(error) };
+            return { err: JSON.stringify(error.message) };
           }
         }
       }
@@ -173,7 +173,7 @@ const resolvers = {
           const data = await subscription.findOne({ _id: id });
           res = data;
         } catch (error) {
-          return { err: JSON.stringify(error) };
+          return { err: JSON.stringify(error.message) };
           // }
         }
       }
@@ -190,7 +190,7 @@ const resolvers = {
             const data = await tickets.findOne({ _id: id });
             res.push(data);
           } catch (error) {
-            return { err: JSON.stringify(error) };
+            return { err: JSON.stringify(error.message) };
           }
         }
       }
@@ -206,7 +206,7 @@ const resolvers = {
           const data = await payment.findOne({ _id: id });
           res = data;
         } catch (error) {
-          return { err: JSON.stringify(error) };
+          return { err: JSON.stringify(error.message) };
         }
       }
       return res;
@@ -223,7 +223,7 @@ const resolvers = {
           const data = await order.findOne({ _id: id });
           res.push(data);
         } catch (error) {
-          return { err: JSON.stringify(error) };
+          return { err: JSON.stringify(error.message) };
         }
         // }
       }
@@ -241,7 +241,7 @@ const resolvers = {
           res = data;
         } catch (error) {
           return {
-            err: JSON.stringify(error),
+            err: JSON.stringify(error.message),
             // };
           };
         }
@@ -260,7 +260,7 @@ const resolvers = {
           const data = await challange.findOne({ _id: id });
           res = data;
         } catch (error) {
-          return { err: JSON.stringify(error) };
+          return { err: JSON.stringify(error.message) };
         }
         // }
       }
@@ -278,7 +278,7 @@ const resolvers = {
             const data = await batch.findOne({ _id: id });
             res.push(data);
           } catch (error) {
-            return { err: JSON.stringify(error) };
+            return { err: JSON.stringify(error.message) };
           }
         }
       }
@@ -296,7 +296,7 @@ const resolvers = {
           const data = await invoice.findOne({ _id: id });
           res = data;
         } catch (error) {
-          return { err: JSON.stringify(error) };
+          return { err: JSON.stringify(error.message) };
         }
         // }
       }

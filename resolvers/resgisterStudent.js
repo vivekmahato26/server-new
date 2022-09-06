@@ -18,7 +18,7 @@ const resolvers = {
           };
         } catch (error) {
           return {
-            err: JSON.stringify(error),
+            err: JSON.stringify(error.message),
           };
         }
       } else {

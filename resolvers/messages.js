@@ -10,7 +10,7 @@ const resolvers = {
         const data = await messages.find({}).toArray();
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
     message: async (_, args) => {
@@ -19,7 +19,7 @@ const resolvers = {
         const data = await messages.findOne({ _id: id });
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
   },
@@ -39,7 +39,7 @@ const resolvers = {
           };
         } catch (error) {
           return {
-            err: JSON.stringify(error),
+            err: JSON.stringify(error.message),
           };
         }
       } else {
@@ -111,7 +111,7 @@ const resolvers = {
           const data = await chatLogs.findOne({ _id: id });
           res = data;
         } catch (error) {
-          return { err: JSON.stringify(error) };
+          return { err: JSON.stringify(error.message) };
         }
       }
       return res;

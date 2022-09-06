@@ -10,7 +10,7 @@ const resolvers = {
         const data = await section.find({}).toArray();
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        throw new Error({ err: JSON.stringify(error.message) });
       }
     },
     section: async (_, args) => {
@@ -19,7 +19,17 @@ const resolvers = {
         const data = await section.findOne({ _id: id });
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
+      }
+    },
+    getSectionBySectionTitle: async (_, args) => {
+      try {
+        const data = await section
+          .find({ sectionTitleID: args.sectionTitleId })
+          .toArray();
+        return data;
+      } catch (error) {
+        throw new Error({ err: JSON.stringify(error.message) });
       }
     },
   },
@@ -34,7 +44,10 @@ const resolvers = {
             createdAt: date.toISOString(),
           });
           const id = new mongoDB.ObjectId(sectionTitleId);
-          const res = await sectionTitle.updateOne({_id:id},{$push: {Section: result.insertedId.toString()}})
+          const res = await sectionTitle.updateOne(
+            { _id: id },
+            { $push: { Section: result.insertedId.toString() } }
+          );
           return {
             msg: "data Added",
           };

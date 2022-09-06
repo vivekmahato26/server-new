@@ -10,7 +10,7 @@ const resolver = {
         const data = await progress.find({}).toArray();
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
     progresses: async (_, args) => {
@@ -19,7 +19,7 @@ const resolver = {
         const data = await progress.findOne({ _id: id });
         return data;
       } catch (error) {
-        return { err: JSON.stringify(error) };
+        return { err: JSON.stringify(error.message) };
       }
     },
   },
@@ -90,7 +90,7 @@ const resolver = {
           const data = await batch.findOne({ _id: id });
           res = data;
         } catch (error) {
-          console.log({ err: JSON.stringify(error) });
+          console.log({ err: JSON.stringify(error.message) });
         }
       }
       return res;
