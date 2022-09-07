@@ -215,7 +215,7 @@ const resolvers = {
     orders: async (parent) => {
       const orderIds = parent.orders;
       let res = [];
-      if(ids === undefined || ids.length === 0) return res;
+      if(orderIds === undefined || orderIds.length === 0) return res;
       if (orderIds) {
         // for (const c of orderIds) {
         try {
@@ -232,7 +232,7 @@ const resolvers = {
     jobApp: async (parent) => {
       const jobAppIds = parent.jobApp;
       let res = [];
-      if(ids === undefined || ids.length === 0) return res;
+      if(jobAppIds === undefined || jobAppIds.length === 0) return res;
       if (jobAppIds) {
         // for (const c of jobAppIds) {
         try {
