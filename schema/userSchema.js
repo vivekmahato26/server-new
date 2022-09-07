@@ -17,7 +17,7 @@ const typeDefs = {
         token: String
         tokenExpiration: String
         userType : String
-
+	id: String
       }
     
       input UserInput {
