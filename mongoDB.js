@@ -2,7 +2,7 @@ const { MongoClient } = require("mongodb");
 
 // Replace the following with your MongoDB deployment's connection string.
 // const uri = "mongodb://localhost:27017";
-const uri ="mongodb://0.0.0.0:27017"
+const uri ="mongodb+srv://process.env.db_user:process.env.db_pass@db-mongodb-cschool-83895681.mongo.ondigitalocean.com/dev?tls=true&authSource=admin&replicaSet=db-mongodb-cschool"
 
 const client = new MongoClient(
   uri,
